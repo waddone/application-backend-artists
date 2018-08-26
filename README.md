@@ -36,7 +36,7 @@ Now you should be able to run `bin/console server:run` to start up your developm
 It is up to you on how you want to structure your app. Fulfill the following requirements:
 
 1. Build a database with doctrine based on the following dataset:
-    * https://gist.github.com/fightbulc/58a0f479299c4e07b4f792b58e9067af
+    * https://gist.github.com/fightbulc/9b8df4e22c2da963cf8ccf96422437fe
     * Import the dataset by using fixtures
         * Artists and albums should get an additional property `token`
             * ensure that token will be unique
