@@ -1,7 +1,7 @@
 # Codebase backend applicants
 
 In order to judge your developer skills we would like you to do the following task.
-The task should not exceed two hours of working time. After that time simply stop working
+The task should not exceed 3 hours of working time. After that time simply stop working
 on the task.
 
 Finished or unfinished we would like to see your result and a couple of words
@@ -10,14 +10,18 @@ of feedback from your end in order to get a better understanding of your thought
 Send your feedback by creating a pull-request from your repository to the original one:
 https://github.com/gimmenetwork/application-backend-artists
 
+We are excited to see what you folks will be handing in!
+
 ## Requirements
 
 - PHP 7.1.3+
 - MySQL
-- Github account
 - Git skills
-- Symfony 4 skills
+- Github account
 - Composer skills
+- Symfony 4 skills
+    - Doctrine
+    - Twig
 
 ## Installation
 
@@ -29,24 +33,26 @@ Now you should be able to run `bin/console server:run` to start up your developm
 
 ## Your task
 
-It is your decision on how you want to build this app. Use only the included composer packages
-and fulfill the following requirements:
+It is up to you on how you want to structure your app. Fulfill the following requirements:
 
-1. As a user I wanna be able to browse through all artists, their albums and songs
-    * Build a database based on the following dataset:
-        * https://gist.github.com/fightbulc/58a0f479299c4e07b4f792b58e9067af
-        * Ensure that all entities have a reference we can expose publically
-            * never expose the actual database id
-    * Import the dataset in form of a fixture
-    * The visual design is up to you
-2. As a developer I wanna be able to have access to two API endpoints:
+1. Build a database with doctrine based on the following dataset:
+    * https://gist.github.com/fightbulc/58a0f479299c4e07b4f792b58e9067af
+    * Import the dataset by using fixtures
+        * Artists and albums should get an additional property `token`
+            * ensure that token will be unique
+            * length of 6 characters
+            * use `App\Utils\TokenGenerator` to generate a token
+        * Songs
+            * transform the length to seconds
+2. Make the data available via the following REST endpoints:
     * `GET /artists`
-        * return a collection of artists with their albums
-        * for albums expose only their reference, name and cover
-        * support direct request of artist data `GET /artists/[reference]`
-    * `GET /albums`
-        * return a collection of albums with their artist reference
-        * show only reference, name and cover
-        * support direct request of album data `GET /albums/[reference]`
-            * show all available information for an album
-    * All responses should be JSON encoded        
+        * show all artists with `token` and `name`
+        * show related albums with `token`, `title`, `cover`
+    * `GET /artists/[token]`
+        * same as for `GET /artists` but only for the requested artist
+    * `GET /albums/[token]`
+        * show album data `token`, `title`, `description`, and `cover`
+        * show related artist with `token` and `name`
+        * show related songs with `title` and `length` (in minutes)
+    * Response should be in JSON
+    * Make sure to handle empty results with the correct response
