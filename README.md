@@ -42,6 +42,7 @@ It is up to you on how you want to structure your app. Fulfill the following req
             * ensure that token will be unique
             * length of 6 characters
             * use `App\Utils\TokenGenerator` to generate a token
+            * should look something like this `3KF6YK`
         * Songs
             * transform the length to seconds
 2. Make the data available via the following REST endpoints:
