@@ -21,7 +21,6 @@ We are excited to see what you folks will be handing in!
 - Composer skills
 - Symfony 4 skills
     - Doctrine
-    - Twig
 
 ## Installation
 
