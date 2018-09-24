@@ -6,6 +6,8 @@ on the task.
 
 Finished or unfinished we would like to see your result and a couple of words
 of feedback from your end in order to get a better understanding of your thought process.
+ **Pay extra attention to the unique token requirement for artists and albums. Ensure that
+ the `token generation` would always result in a unique token.**
 
 Send your feedback by creating a pull-request from your repository to the original one:
 https://github.com/gimmenetwork/application-backend-artists
